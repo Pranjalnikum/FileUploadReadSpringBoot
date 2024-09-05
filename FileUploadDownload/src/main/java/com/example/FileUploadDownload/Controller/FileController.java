@@ -2,6 +2,7 @@ package com.example.FileUploadDownload.Controller;
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.LinkedHashMap;
@@ -117,10 +118,15 @@ public class FileController {
 									break;
 								case NUMERIC:
 									if (DateUtil.isCellDateFormatted(cell)) { // Check if cell is date-formatted
-										Date dateValue = cell.getDateCellValue();
-										System.out.println(columnNames[colIndex] + ": " + dateValue);
+										 Date dateValue = cell.getDateCellValue();
+									        
+									        // Define the date format
+									        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+									        
+									        // Print the formatted date
+									        System.out.println(columnNames[colIndex] + ": " + sdf.format(dateValue));
 									} else {
-										double numericValue = cell.getNumericCellValue();
+										Integer numericValue = (int) cell.getNumericCellValue();
 										System.out.println(columnNames[colIndex] + ": " + numericValue);
 									}
 									break;
